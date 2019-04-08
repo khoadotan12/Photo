@@ -10,16 +10,42 @@ import UIKit
 
 class PhotoViewController: UICollectionViewController {
     
-    var collectionData = ["1 🎃", "2 🚚", "3 🏍", "4 🏘", "5 ⚾️", "1 🎃", "2 🚚", "3 🏍", "4 🏘", "5 ⚾️", "1 🎃", "2 🚚", "3 🏍", "4 🏘", "5 ⚾️", "1 🎃", "2 🚚", "3 🏍", "4 🏘", "5 ⚾️", "1 🎃", "2 🚚", "3 🏍", "4 🏘", "5 ⚾️", "1 🎃", "2 🚚", "3 🏍", "4 🏘", "5 ⚾️", "1 🎃", "2 🚚", "3 🏍", "4 🏘", "5 ⚾️", "1 🎃", "2 🚚", "3 🏍", "4 🏘", "5 ⚾️"]
+    var collectionData = []
+    let key = String("99538a231288cc67714859f6513e8556be7aa5016b60a516315e8041f09a717c")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         let width = (view.frame.size.width - 20) / 3
-        let layout = collectionView.collectionViewLayout as!
-        UICollectionViewFlowLayout
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
+        loadAPI()
+    }
+    
+    func loadAPI() {
+        let url = URL(string: "https://api.unsplash.com/photos?client_id=" + key + "&page=1")
+        let dataTask = URLSession.shared.dataTask(with: url!, completionHandler: {
+            (data, response, error) -> Void in
+            if let error = error {
+                NSLog("Error: \(error)")
+                return
+            }
+            if let data = data {
+                if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
+                    if let jsonArray = jsonResponse as? NSArray{
+                        for object in jsonArray {
+                            if let urls = (object as? NSDictionary)!.value(forKey: "urls") {
+                                if let thumb = (urls as? NSDictionary)!.value(forKey: "thumb") {
+                                    print(thumb)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
+        dataTask.resume()
     }
     
     
