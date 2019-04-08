@@ -10,7 +10,7 @@ import UIKit
 
 class PhotoViewController: UICollectionViewController {
     
-    var collectionData = []
+    var collectionData = [String]()
     let key = String("99538a231288cc67714859f6513e8556be7aa5016b60a516315e8041f09a717c")
     
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class PhotoViewController: UICollectionViewController {
     }
     
     func loadAPI() {
-        let url = URL(string: "https://api.unsplash.com/photos?client_id=" + key + "&page=1")
+        let url = URL(string: "https://api.unsplash.com/photos?client_id=" + key + "&page=1&per_page=30")
         let dataTask = URLSession.shared.dataTask(with: url!, completionHandler: {
             (data, response, error) -> Void in
             if let error = error {
@@ -37,10 +37,17 @@ class PhotoViewController: UICollectionViewController {
                         for object in jsonArray {
                             if let urls = (object as? NSDictionary)!.value(forKey: "urls") {
                                 if let thumb = (urls as? NSDictionary)!.value(forKey: "thumb") {
-                                    print(thumb)
+                                    self.collectionData.append((thumb as? String)!)
                                 }
                             }
                         }
+                        OperationQueue.main.addOperation({
+                            self.collectionView.reloadData()
+//                            self.collectionView.performBatchUpdates({
+//                                let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
+//                                self.collectionView.insertItems(at: [indexPath])
+//                            }, completion: nil)
+                        })
                     }
                 }
             }
@@ -70,7 +77,7 @@ extension PhotoViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
         if let imageView = cell.viewWithTag(10) as? UIImageView {
-            let url = URL(string: "https://salt.tikicdn.com/cache/w1200/ts/product/ad/6c/a9/fd6450656e968244cf43cabf55a3cbb0.jpg")
+            let url = URL(string: collectionData[indexPath.row])
             imageView.load(url: url!)
         }
         return cell
