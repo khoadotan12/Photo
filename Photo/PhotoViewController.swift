@@ -12,6 +12,8 @@ class PhotoViewController: UICollectionViewController {
     
     var collectionData = [String]()
     let key = String("99538a231288cc67714859f6513e8556be7aa5016b60a516315e8041f09a717c")
+    var page = 1
+    var loading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,11 +22,17 @@ class PhotoViewController: UICollectionViewController {
         let width = (view.frame.size.width - 20) / 3
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
-        loadAPI()
+        loadAPI(self.page)
     }
     
-    func loadAPI() {
-        let url = URL(string: "https://api.unsplash.com/photos?client_id=" + key + "&page=1&per_page=30")
+    func loadMore() {
+        self.page += 1
+        loading = true
+        loadAPI(self.page)
+    }
+    
+    func loadAPI(_ page: Int) {
+        let url = URL(string: "https://api.unsplash.com/photos?client_id=" + key + "&page=" + String(page) + "&per_page=30")
         let dataTask = URLSession.shared.dataTask(with: url!, completionHandler: {
             (data, response, error) -> Void in
             if let error = error {
@@ -42,11 +50,17 @@ class PhotoViewController: UICollectionViewController {
                             }
                         }
                         OperationQueue.main.addOperation({
-                            self.collectionView.reloadData()
-//                            self.collectionView.performBatchUpdates({
-//                                let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
-//                                self.collectionView.insertItems(at: [indexPath])
-//                            }, completion: nil)
+                            if page == 1 {
+                                self.collectionView.reloadData()
+                            }
+                            else {
+                                print(self.collectionData.count)
+                                self.loading = false
+//                                self.collectionView.performBatchUpdates({
+//                                    let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
+//                                    self.collectionView.insertItems(at: [indexPath])
+//                                }, completion: nil)
+                            }
                         })
                     }
                 }
@@ -85,9 +99,9 @@ extension PhotoViewController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y >= scrollView.contentSize.height - view.frame.size.height {
-            print(scrollView.contentOffset.y)
-            print(scrollView.contentSize.height)
-            print(view.frame.size.height)
+            if !loading {
+                loadMore()
+            }
         }
     }
 }
