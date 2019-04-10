@@ -42,26 +42,24 @@ class PhotoViewController: UICollectionViewController {
             if let data = data {
                 if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
                     if let jsonArray = jsonResponse as? NSArray{
+                        var tempThumb = [String]()
                         for object in jsonArray {
                             if let urls = (object as? NSDictionary)!.value(forKey: "urls") {
                                 if let thumb = (urls as? NSDictionary)!.value(forKey: "thumb") {
-                                    self.collectionData.append((thumb as? String)!)
+                                    tempThumb.append((thumb as? String)!)
                                 }
                             }
                         }
-                        OperationQueue.main.addOperation({
-                            if page == 1 {
-                                self.collectionView.reloadData()
+                        DispatchQueue.main.sync{
+                            self.loading = false
+                            for thumb in tempThumb {
+                                self.collectionView.performBatchUpdates({
+                                    self.collectionData.append(thumb)
+                                    let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
+                                    self.collectionView.insertItems(at: [indexPath])
+                                }, completion: nil)
                             }
-                            else {
-                                print(self.collectionData.count)
-                                self.loading = false
-//                                self.collectionView.performBatchUpdates({
-//                                    let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
-//                                    self.collectionView.insertItems(at: [indexPath])
-//                                }, completion: nil)
-                            }
-                        })
+                        }
                     }
                 }
             }
@@ -99,7 +97,7 @@ extension PhotoViewController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y >= scrollView.contentSize.height - view.frame.size.height {
-            if !loading {
+            if !loading && self.collectionData.count > 0 {
                 loadMore()
             }
         }
