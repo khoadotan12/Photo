@@ -40,19 +40,19 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="NCW-ku-AiU" customClass="PhotoViewCell" customModule="Photo" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" reuseIdentifier="ImageCell" id="NCW-ku-AiU" customClass="PhotoViewCell" customModule="Photo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="piN-iH-ERN">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="piN-iH-ERN">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="piN-iH-ERN" firstAttribute="leading" secondItem="NCW-ku-AiU" secondAttribute="leading" id="4Ye-c0-SGH"/>
                                     <constraint firstAttribute="trailing" secondItem="piN-iH-ERN" secondAttribute="trailing" id="Tf2-RS-Zjd"/>

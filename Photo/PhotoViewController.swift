@@ -9,7 +9,12 @@ import UIKit
 
 class PhotoViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var collectionData = [String]()
+    struct ImageInfo {
+        var url: String
+        var width: Int
+        var height: Int
+    }
+    var collectionData = [ImageInfo]()
     let key = String("99538a231288cc67714859f6513e8556be7aa5016b60a516315e8041f09a717c")
     var page = 1
     var loading = false
@@ -42,11 +47,12 @@ class PhotoViewController: UICollectionViewController, UICollectionViewDelegateF
                 if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
                     if let jsonArray = jsonResponse as? NSArray{
                         for object in jsonArray {
-                            if let urls = (object as? NSDictionary)!.value(forKey: "urls") {
+                            let objectDist = object as? NSDictionary
+                            if let urls = objectDist!.value(forKey: "urls"), let width = objectDist!.value(forKey: "width"), let height = objectDist!.value(forKey: "height") {
                                 if let thumb = (urls as? NSDictionary)!.value(forKey: "thumb") {
                                     DispatchQueue.main.sync{
                                     self.collectionView.performBatchUpdates({
-                                        self.collectionData.append((thumb as? String)!)
+                                        self.collectionData.append(ImageInfo(url: thumb as! String, width: width as! Int, height: height as! Int))
                                         let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
                                         self.collectionView.insertItems(at: [indexPath])
                                     }, completion: nil)
@@ -82,14 +88,16 @@ extension PhotoViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.size.width - 20) / 3
-        return CGSize(width: width, height: 100)
+        let width = (view.frame.size.width - 30) / 3
+        let imageWidth = CGFloat(collectionData[indexPath.row].width)
+        let imageHeight = CGFloat(collectionData[indexPath.row].height)
+        return CGSize(width: width, height: imageHeight * width / imageWidth)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
         if let imageView = cell.viewWithTag(10) as? UIImageView {
-            let url = URL(string: collectionData[indexPath.row])
+            let url = URL(string: collectionData[indexPath.row].url)
             imageView.load(url: url!)
         }
         return cell
