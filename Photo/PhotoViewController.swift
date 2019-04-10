@@ -5,10 +5,9 @@
 //  Created by Đỗ Tấn Khoa on 4/6/19.
 //  Copyright © 2019 Đỗ Tấn Khoa. All rights reserved.
 //
-
 import UIKit
 
-class PhotoViewController: UICollectionViewController {
+class PhotoViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var collectionData = [String]()
     let key = String("99538a231288cc67714859f6513e8556be7aa5016b60a516315e8041f09a717c")
@@ -42,24 +41,20 @@ class PhotoViewController: UICollectionViewController {
             if let data = data {
                 if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
                     if let jsonArray = jsonResponse as? NSArray{
-                        var tempThumb = [String]()
                         for object in jsonArray {
                             if let urls = (object as? NSDictionary)!.value(forKey: "urls") {
                                 if let thumb = (urls as? NSDictionary)!.value(forKey: "thumb") {
-                                    tempThumb.append((thumb as? String)!)
+                                    DispatchQueue.main.sync{
+                                    self.collectionView.performBatchUpdates({
+                                        self.collectionData.append((thumb as? String)!)
+                                        let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
+                                        self.collectionView.insertItems(at: [indexPath])
+                                    }, completion: nil)
+                                    }
                                 }
                             }
                         }
-                        DispatchQueue.main.sync{
-                            self.loading = false
-                            for thumb in tempThumb {
-                                self.collectionView.performBatchUpdates({
-                                    self.collectionData.append(thumb)
-                                    let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
-                                    self.collectionView.insertItems(at: [indexPath])
-                                }, completion: nil)
-                            }
-                        }
+                        self.loading = false
                     }
                 }
             }
@@ -84,6 +79,11 @@ class PhotoViewController: UICollectionViewController {
 extension PhotoViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.size.width - 20) / 3
+        return CGSize(width: width, height: 100)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
