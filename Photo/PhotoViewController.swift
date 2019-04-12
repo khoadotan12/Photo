@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class PhotoViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class PhotoViewController: UICollectionViewController {
     
     struct ImageInfo {
         var url: String
@@ -23,10 +23,18 @@ class PhotoViewController: UICollectionViewController, UICollectionViewDelegateF
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
         let width = (view.frame.size.width - 20) / 3
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
+        layout.headerReferenceSize = CGSize(width: self.collectionView.bounds.size.width, height: 50)
         loadAPI(self.page)
+    }
+    
+    func search(_ key: String) {
+        collectionData.removeAll()
+        page = 1
+        loading = true
     }
     
     func loadMore() {
@@ -82,7 +90,8 @@ class PhotoViewController: UICollectionViewController, UICollectionViewDelegateF
 }
 
 
-extension PhotoViewController {
+extension PhotoViewController: UICollectionViewDelegateFlowLayout {
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionData.count
     }
@@ -95,10 +104,13 @@ extension PhotoViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! PhotoViewCell
         if let imageView = cell.viewWithTag(10) as? UIImageView {
             let url = URL(string: collectionData[indexPath.row].url)
-            imageView.load(url: url!)
+            imageView.load(url: url!, completion: {
+                image in
+                cell.setCustomImage(image: image)
+            })
         }
         return cell
     }
@@ -110,15 +122,46 @@ extension PhotoViewController {
             }
         }
     }
+    
+}
+
+extension PhotoViewController {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        // 1
+        switch kind {
+        // 2
+        case UICollectionView.elementKindSectionHeader:
+            // 3
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "PhotoHeaderView",
+                for: indexPath) as? PhotoHeaderView
+                else {
+                    fatalError("Invalid view type")
+            }
+            return headerView
+        default:
+            // 4
+            assert(false, "Invalid element type")
+        }
+    }
+}
+
+extension PhotoViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if(!(searchBar.text?.isEmpty)!){
+            search(searchBar.text!)
+        }
+    }
 }
 
 extension UIImageView {
-    func load(url: URL) {
+    func load(url: URL, completion: @escaping ((UIImage) -> Void)) {
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self?.image = image
+                        completion(image)
                     }
                 }
             }

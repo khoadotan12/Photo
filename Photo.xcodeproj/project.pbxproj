@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A09E356225E2B780029680B /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09E355225E2B780029680B /* PhotoViewCell.swift */; };
+		2A0F8238225F94E10085DFF5 /* PhotoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F8237225F94E10085DFF5 /* PhotoHeaderView.swift */; };
 		2A8D94162258D13900D9205C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D94152258D13900D9205C /* AppDelegate.swift */; };
 		2A8D94182258D13900D9205C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D94172258D13900D9205C /* ViewController.swift */; };
 		2A8D941B2258D13900D9205C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8D94192258D13900D9205C /* Main.storyboard */; };
@@ -16,7 +17,6 @@
 		2A8D942B2258D13C00D9205C /* PhotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D942A2258D13C00D9205C /* PhotoTests.swift */; };
 		2A8D94362258D13C00D9205C /* PhotoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D94352258D13C00D9205C /* PhotoUITests.swift */; };
 		2A8D94442258DC1600D9205C /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D94432258DC1600D9205C /* PhotoViewController.swift */; };
-		2A8D94462258E69700D9205C /* SearchCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D94452258E69700D9205C /* SearchCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		2A09E355225E2B780029680B /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
+		2A0F8237225F94E10085DFF5 /* PhotoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHeaderView.swift; sourceTree = "<group>"; };
 		2A8D94122258D13900D9205C /* Photo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8D94152258D13900D9205C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A8D94172258D13900D9205C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		2A8D94352258D13C00D9205C /* PhotoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUITests.swift; sourceTree = "<group>"; };
 		2A8D94372258D13C00D9205C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A8D94432258DC1600D9205C /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
-		2A8D94452258E69700D9205C /* SearchCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +110,8 @@
 				2A8D941E2258D13C00D9205C /* LaunchScreen.storyboard */,
 				2A8D94212258D13C00D9205C /* Info.plist */,
 				2A8D94432258DC1600D9205C /* PhotoViewController.swift */,
-				2A8D94452258E69700D9205C /* SearchCollectionReusableView.swift */,
 				2A09E355225E2B780029680B /* PhotoViewCell.swift */,
+				2A0F8237225F94E10085DFF5 /* PhotoHeaderView.swift */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -265,8 +265,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A0F8238225F94E10085DFF5 /* PhotoHeaderView.swift in Sources */,
 				2A8D94182258D13900D9205C /* ViewController.swift in Sources */,
-				2A8D94462258E69700D9205C /* SearchCollectionReusableView.swift in Sources */,
 				2A8D94162258D13900D9205C /* AppDelegate.swift in Sources */,
 				2A8D94442258DC1600D9205C /* PhotoViewController.swift in Sources */,
 				2A09E356225E2B780029680B /* PhotoViewCell.swift in Sources */,

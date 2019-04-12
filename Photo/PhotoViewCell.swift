@@ -9,25 +9,14 @@
 import UIKit
 
 class PhotoViewCell: UICollectionViewCell {
-    @IBOutlet weak var imageView: UIImageView!
-    internal var aspectConstraint : NSLayoutConstraint? {
-        didSet {
-            if oldValue != nil {
-                imageView.removeConstraint(oldValue!)
-            }
-            if aspectConstraint != nil {
-                imageView.addConstraint(aspectConstraint!)
-            }
-        }
-    }
+    @IBOutlet weak var imageView: UIImageView!    
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        aspectConstraint = nil
+        imageView.image = nil
     }
     
     func setCustomImage(image : UIImage) {
-        
         imageView.image = image
     }
 }

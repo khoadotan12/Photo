@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,15 +33,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jjV-rO-ghp">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0DV-hX-hra">
                             <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" reuseIdentifier="ImageCell" id="NCW-ku-AiU" customClass="PhotoViewCell" customModule="Photo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="50" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -52,7 +52,7 @@
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="piN-iH-ERN" firstAttribute="leading" secondItem="NCW-ku-AiU" secondAttribute="leading" id="4Ye-c0-SGH"/>
                                     <constraint firstAttribute="trailing" secondItem="piN-iH-ERN" secondAttribute="trailing" id="Tf2-RS-Zjd"/>
@@ -65,14 +65,55 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PhotoHeaderView" id="mcd-di-TnI" customClass="PhotoHeaderView" customModule="Photo" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bRM-Ib-WHh">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="3IZ-or-BjB" id="6UL-PN-XS1"/>
+                                    </connections>
+                                </searchBar>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="bRM-Ib-WHh" firstAttribute="top" secondItem="mcd-di-TnI" secondAttribute="top" id="FAr-tE-YVd"/>
+                                <constraint firstItem="bRM-Ib-WHh" firstAttribute="leading" secondItem="mcd-di-TnI" secondAttribute="leading" id="mcN-gX-Q5W"/>
+                                <constraint firstAttribute="bottom" secondItem="bRM-Ib-WHh" secondAttribute="bottom" id="nQV-Ii-J2g"/>
+                                <constraint firstAttribute="trailing" secondItem="bRM-Ib-WHh" secondAttribute="trailing" id="wrV-4X-trj"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="searchBar" destination="bRM-Ib-WHh" id="1MT-Go-lxe"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="3IZ-or-BjB" id="4n5-Jc-S6g"/>
                             <outlet property="delegate" destination="3IZ-or-BjB" id="apU-nV-Ngc"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Unsplash" id="4CG-bi-V2m"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="fy8-WC-iw8" id="Wfe-t8-8Um"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yd1-ml-jgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="cz6-XJ-Usf">
+                    <connections>
+                        <outlet property="delegate" destination="3IZ-or-BjB" id="jMn-3C-Umv"/>
+                        <outlet property="searchContentsController" destination="3IZ-or-BjB" id="LKb-GD-Ne1"/>
+                        <outlet property="searchResultsDataSource" destination="3IZ-or-BjB" id="ivd-Oz-v5Z"/>
+                        <outlet property="searchResultsDelegate" destination="3IZ-or-BjB" id="O4W-IZ-blK"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="fy8-WC-iw8">
+                    <connections>
+                        <outlet property="delegate" destination="3IZ-or-BjB" id="wfN-fR-luT"/>
+                        <outlet property="searchContentsController" destination="3IZ-or-BjB" id="O88-Kb-ZJm"/>
+                        <outlet property="searchResultsDataSource" destination="3IZ-or-BjB" id="ta9-sn-wOk"/>
+                        <outlet property="searchResultsDelegate" destination="3IZ-or-BjB" id="FVT-6u-bqZ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-91.304347826086968" y="87.723214285714278"/>
         </scene>
