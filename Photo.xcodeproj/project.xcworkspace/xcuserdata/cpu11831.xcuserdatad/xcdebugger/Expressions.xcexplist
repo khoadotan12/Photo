@@ -3,6 +3,34 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "PhotoViewController.scrollViewDidScroll(_:):PhotoViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PhotoViewController.searchAPI(_:):PhotoViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PhotoViewController.searchBarSearchButtonClicked(_:):PhotoViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "searchBar.text?.isEmpty">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in PhotoViewController.loadAPI(_:):PhotoViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PhotoViewLayout.layoutAttributesForItem(at:):PhotoViewLayout.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cache">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "PhotoViewLayout.prepare():PhotoViewLayout.swift">
          <PersistentStrings>
             <PersistentString
@@ -17,10 +45,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "PhotoViewLayout.layoutAttributesForItem(at:):PhotoViewLayout.swift">
+         contextName = "PhotoViewController.collectionView(_:layout:sizeForItemAt:):PhotoViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "cache">
+               value = "collectionData[indexPath.row].size">
             </PersistentString>
             <PersistentString
                value = "indexPath.row">
@@ -34,23 +62,6 @@
                value = "collectionData.count">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in PhotoViewController.loadAPI(_:):PhotoViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "PhotoViewController.collectionView(_:layout:sizeForItemAt:):PhotoViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "collectionData[indexPath.row].size">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "PhotoViewController.scrollViewDidScroll(_:):PhotoViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

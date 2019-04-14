@@ -85,20 +85,6 @@ class PhotoViewController: UICollectionViewController {
                                 }
                             }
                         }
-//                        for object in jsonArray {
-//                            let objectDict = object as? NSDictionary
-//                            if let urls = objectDict!.value(forKey: "urls"), let width = objectDict!.value(forKey: "width"), let height = objectDict!.value(forKey: "height") {
-//                                if let thumb = (urls as? NSDictionary)!.value(forKey: "thumb") {
-//                                    DispatchQueue.main.sync{
-//                                        self.collectionView.performBatchUpdates({
-//                                            self.collectionData.append(ImageInfo(url: thumb as! String, width: width as! Int, height: height as! Int))
-//                                            let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
-//                                            self.collectionView.insertItems(at: [indexPath])
-//                                        }, completion: nil)
-//                                    }
-//                                }
-//                            }
-//                        }
                         self.loading = false
                     }
                 }
@@ -215,6 +201,17 @@ extension PhotoViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if(!(searchBar.text?.isEmpty)!){
             search(searchBar.text!)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText.count == 0) {
+            collectionData.removeAll()
+            collectionView.reloadData()
+            self.page = 1
+            self.loading = true
+            self.totalPage = 0
+            loadAPI(1)
         }
     }
 }
