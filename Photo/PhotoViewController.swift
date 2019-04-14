@@ -18,6 +18,7 @@ class PhotoViewController: UICollectionViewController {
     let key = String("99538a231288cc67714859f6513e8556be7aa5016b60a516315e8041f09a717c")
     var page = 1
     var loading = false
+    var totalPage = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,20 +32,83 @@ class PhotoViewController: UICollectionViewController {
         loadAPI(self.page)
     }
     
-    func search(_ key: String) {
+    func search(_ query: String) {
         collectionData.removeAll()
-        page = 1
-        loading = true
+        self.page = 1
+        self.loading = true
+        searchAPI(query)
+        self.collectionView.reloadData()
     }
     
     func loadMore() {
         self.page += 1
-        loading = true
-        loadAPI(self.page)
+        self.loading = true
+        if (self.page <= self.totalPage) {
+            loadAPI(self.page)
+        }
+    }
+    
+    func searchAPI(_ query: String) {
+//        let escapedQuery = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+//        let urlpath = String(format: "?client_id=\(self.key)&query=\(escapedQuery)&page=\(self.page)&per_page=30")
+        var components = URLComponents(string: "https://api.unsplash.com/search/photos")!
+        components.queryItems = [
+            URLQueryItem(name: "client_id", value: self.key),
+            URLQueryItem(name: "query", value: query),
+            URLQueryItem(name: "page", value: String(self.page)),
+            URLQueryItem(name: "per_page", value: "30")
+        ]
+        let url = components.url!
+        let dataTask = URLSession.shared.dataTask(with: url, completionHandler: {
+            (data, response, error) -> Void in
+            if let error = error {
+                NSLog("Error: \(error)")
+                return
+            }
+            if let data = data {
+                if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
+                    if let jsonDict = jsonResponse as? NSDictionary{
+                        if let total = jsonDict.value(forKey: "total_pages") {
+                            self.totalPage = total as! Int
+                            if let resultArray = (jsonDict.value(forKey: "results") as? NSArray) {
+                                for object in resultArray {
+                                    let objectDict = object as? NSDictionary
+                                    if let urls = objectDict!.value(forKey: "urls"), let width = objectDict!.value(forKey: "width"), let height = objectDict!.value(forKey: "height") {
+                                        if let thumb = (urls as? NSDictionary)!.value(forKey: "thumb") {
+                                            DispatchQueue.main.sync{
+                                                self.collectionData.append(ImageInfo(url: thumb as! String, width: width as! Int, height: height as! Int))
+                                                let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
+                                                self.collectionView.insertItems(at: [indexPath])
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+//                        for object in jsonArray {
+//                            let objectDict = object as? NSDictionary
+//                            if let urls = objectDict!.value(forKey: "urls"), let width = objectDict!.value(forKey: "width"), let height = objectDict!.value(forKey: "height") {
+//                                if let thumb = (urls as? NSDictionary)!.value(forKey: "thumb") {
+//                                    DispatchQueue.main.sync{
+//                                        self.collectionView.performBatchUpdates({
+//                                            self.collectionData.append(ImageInfo(url: thumb as! String, width: width as! Int, height: height as! Int))
+//                                            let indexPath = IndexPath(row: self.collectionData.count - 1, section: 0)
+//                                            self.collectionView.insertItems(at: [indexPath])
+//                                        }, completion: nil)
+//                                    }
+//                                }
+//                            }
+//                        }
+                        self.loading = false
+                    }
+                }
+            }
+        })
+        dataTask.resume()
     }
     
     func loadAPI(_ page: Int) {
-        let url = URL(string: "https://api.unsplash.com/photos?client_id=" + key + "&page=" + String(page) + "&per_page=30")
+        let url = URL(string: "https://api.unsplash.com/photos?client_id=\(self.key)&page=\(self.page)&per_page=30")
         let dataTask = URLSession.shared.dataTask(with: url!, completionHandler: {
             (data, response, error) -> Void in
             if let error = error {
@@ -55,8 +119,8 @@ class PhotoViewController: UICollectionViewController {
                 if let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) {
                     if let jsonArray = jsonResponse as? NSArray{
                         for object in jsonArray {
-                            let objectDist = object as? NSDictionary
-                            if let urls = objectDist!.value(forKey: "urls"), let width = objectDist!.value(forKey: "width"), let height = objectDist!.value(forKey: "height") {
+                            let objectDict = object as? NSDictionary
+                            if let urls = objectDict!.value(forKey: "urls"), let width = objectDict!.value(forKey: "width"), let height = objectDict!.value(forKey: "height") {
                                 if let thumb = (urls as? NSDictionary)!.value(forKey: "thumb") {
                                     DispatchQueue.main.sync{
                                     self.collectionView.performBatchUpdates({
