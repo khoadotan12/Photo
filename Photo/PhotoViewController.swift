@@ -19,6 +19,7 @@ class PhotoViewController: UICollectionViewController {
     var page = 1
     var loading = false
     var totalPage = 0
+    var query = String("")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class PhotoViewController: UICollectionViewController {
     func search(_ query: String) {
         collectionData.removeAll()
         self.page = 1
+        self.query = query
         self.loading = true
         searchAPI(query)
         self.collectionView.reloadData()
@@ -43,8 +45,11 @@ class PhotoViewController: UICollectionViewController {
     func loadMore() {
         self.page += 1
         self.loading = true
-        if (self.page <= self.totalPage) {
+        if (self.query.isEmpty) {
             loadAPI(self.page)
+        }
+        else {
+            searchAPI(self.query)
         }
     }
     
@@ -208,8 +213,9 @@ extension PhotoViewController: UISearchBarDelegate {
         if (searchText.count == 0) {
             collectionData.removeAll()
             collectionView.reloadData()
+            self.query = ""
             self.page = 1
-            self.loading = true
+            self.loading = false
             self.totalPage = 0
             loadAPI(1)
         }
