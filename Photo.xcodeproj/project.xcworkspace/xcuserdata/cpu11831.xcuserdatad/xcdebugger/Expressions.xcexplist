@@ -3,29 +3,21 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "PhotoUITests.testScroll():PhotoUITests.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "newCells.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "PhotoViewController.scrollViewDidScroll(_:):PhotoViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "PhotoViewController.searchAPI(_:):PhotoViewController.swift">
+         contextName = "closure #1 in closure #1 in PhotoViewController.loadAPI(_:):PhotoViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "PhotoViewController.searchBarSearchButtonClicked(_:):PhotoViewController.swift">
+         contextName = "TopAlignedCollectionViewFlowLayout.alignToTopForSameLineElements(sameLineElements:):TopAlignedCollectionViewFlowLayout.swift">
          <PersistentStrings>
             <PersistentString
-               value = "searchBar.text?.isEmpty">
+               value = "tallest.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "obj.frame.origin.y">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in PhotoViewController.loadAPI(_:):PhotoViewController.swift">
       </ContextState>
       <ContextState
          contextName = "PhotoViewLayout.layoutAttributesForItem(at:):PhotoViewLayout.swift">
@@ -35,17 +27,6 @@
             </PersistentString>
             <PersistentString
                value = "indexPath.row">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "PhotoViewController.loadMore():PhotoViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "PhotoUITests.testSearchBar():PhotoUITests.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "searchBar.value as! String">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -75,10 +56,54 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PhotoViewController.searchAPI(_:):PhotoViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PhotoUITests.testScroll():PhotoUITests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "newCells.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TopAlignedCollectionViewFlowLayout.alignToTopForSameLineElements(sameLineElements:lastLineElements:):TopAlignedCollectionViewFlowLayout.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tallest.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "sorted[1]">
+            </PersistentString>
+            <PersistentString
+               value = "obj.frame.origin.y">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PhotoViewController.loadMore():PhotoViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PhotoViewController.searchBarSearchButtonClicked(_:):PhotoViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "searchBar.text?.isEmpty">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "PhotoViewController.collectionView(_:numberOfItemsInSection:):PhotoViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "collectionData.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PhotoUITests.testSearchBar():PhotoUITests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "searchBar.value as! String">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

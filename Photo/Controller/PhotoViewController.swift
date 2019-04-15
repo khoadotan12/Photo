@@ -27,9 +27,9 @@ class PhotoViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
         
         let width = (view.frame.size.width - 20) / 3
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width)
-        layout.headerReferenceSize = CGSize(width: self.collectionView.bounds.size.width, height: 50)
+        let layout = collectionView.collectionViewLayout as! TopAlignedCollectionViewFlowLayout
+//        layout.itemSize = CGSize(width: width, height: width)
+//        layout.headerReferenceSize = CGSize(width: self.collectionView.bounds.size.width, height: 50)
         layout.sectionHeadersPinToVisibleBounds = true
         loadAPI(self.page)
     }

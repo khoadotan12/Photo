@@ -13,6 +13,7 @@
 		2A0DEEAD22643BBE000F1716 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0DEEA922643BBE000F1716 /* URLSessionProtocol.swift */; };
 		2A0DEEAE22643BBE000F1716 /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0DEEAA22643BBE000F1716 /* MockSession.swift */; };
 		2A0DEEAF22643BBE000F1716 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0DEEAB22643BBE000F1716 /* URLSessionDataTaskProtocol.swift */; };
+		2A0DEEB5226497DD000F1716 /* TopAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0DEEB4226497DD000F1716 /* TopAlignedCollectionViewFlowLayout.swift */; };
 		2A0F8238225F94E10085DFF5 /* PhotoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F8237225F94E10085DFF5 /* PhotoHeaderView.swift */; };
 		2A8D94162258D13900D9205C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D94152258D13900D9205C /* AppDelegate.swift */; };
 		2A8D94182258D13900D9205C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D94172258D13900D9205C /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 		2A0DEEA922643BBE000F1716 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		2A0DEEAA22643BBE000F1716 /* MockSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
 		2A0DEEAB22643BBE000F1716 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
+		2A0DEEB4226497DD000F1716 /* TopAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		2A0F8237225F94E10085DFF5 /* PhotoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHeaderView.swift; sourceTree = "<group>"; };
 		2A8D94122258D13900D9205C /* Photo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8D94152258D13900D9205C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		2A0DEEB6226497E1000F1716 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				2A0DEEB4226497DD000F1716 /* TopAlignedCollectionViewFlowLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		2A8D94092258D13900D9205C = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +160,7 @@
 		2A8D94142258D13900D9205C /* Photo */ = {
 			isa = PBXGroup;
 			children = (
+				2A0DEEB6226497E1000F1716 /* Layout */,
 				2A0DEEB322647DAE000F1716 /* Header */,
 				2A0DEEB222647D10000F1716 /* Controller */,
 				2A0DEEB122647D03000F1716 /* Cells */,
@@ -314,6 +325,7 @@
 			files = (
 				2A0F8238225F94E10085DFF5 /* PhotoHeaderView.swift in Sources */,
 				2A0DEEAC22643BBE000F1716 /* MockDataTask.swift in Sources */,
+				2A0DEEB5226497DD000F1716 /* TopAlignedCollectionViewFlowLayout.swift in Sources */,
 				2A8D94182258D13900D9205C /* ViewController.swift in Sources */,
 				2A0DEEA722643B8F000F1716 /* HTTPClient.swift in Sources */,
 				2A0DEEAF22643BBE000F1716 /* URLSessionDataTaskProtocol.swift in Sources */,
