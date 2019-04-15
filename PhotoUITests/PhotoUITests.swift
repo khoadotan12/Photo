@@ -29,7 +29,6 @@ class PhotoUITests: XCTestCase {
     }
 
     func testSearchBar() {
-        
         let searchBar = app.collectionViews.searchFields["Tìm kiếm"]
         
         XCTAssert(searchBar.exists, "Search bar doesn't exist")
@@ -44,9 +43,29 @@ class PhotoUITests: XCTestCase {
         aKey.tap()
         
         let tKey = app/*@START_MENU_TOKEN@*/.keys["t"]/*[[".keyboards.keys[\"t\"]",".keys[\"t\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        
+        let app = XCUIApplication()
         tKey.tap()
         
         XCTAssert(searchBar.value as! String == "Cat", "Search bar value is not correct")
+        app/*@START_MENU_TOKEN@*/.buttons["Search"]/*[[".keyboards",".buttons[\"Tìm\"]",".buttons[\"Search\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+        searchBar.tap()
+        searchBar.buttons["Clear text"].tap()
+        XCTAssertFalse(searchBar.value as! String == "Cat", "Search bar is not cleared the text")
+        
+    }
+    
+    func testScroll() {
+        
+        let oldCount = app.collectionViews.cells.count
+        
+        
+        app.collectionViews.element.swipeUp()
+        app.collectionViews.element.swipeUp()
+        let newCount = app.collectionViews.cells.count
+        XCTAssert(oldCount != newCount, "Collection views did not scroll down")
+
     }
 
 }

@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "PhotoUITests.testScroll():PhotoUITests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "newCells.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "PhotoViewController.scrollViewDidScroll(_:):PhotoViewController.swift">
       </ContextState>
       <ContextState
@@ -27,6 +35,17 @@
             </PersistentString>
             <PersistentString
                value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PhotoViewController.loadMore():PhotoViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PhotoUITests.testSearchBar():PhotoUITests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "searchBar.value as! String">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
