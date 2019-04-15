@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2A09E356225E2B780029680B /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09E355225E2B780029680B /* PhotoViewCell.swift */; };
+		2A0DEEA722643B8F000F1716 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0DEEA622643B8F000F1716 /* HTTPClient.swift */; };
+		2A0DEEAC22643BBE000F1716 /* MockDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0DEEA822643BBE000F1716 /* MockDataTask.swift */; };
+		2A0DEEAD22643BBE000F1716 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0DEEA922643BBE000F1716 /* URLSessionProtocol.swift */; };
+		2A0DEEAE22643BBE000F1716 /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0DEEAA22643BBE000F1716 /* MockSession.swift */; };
+		2A0DEEAF22643BBE000F1716 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0DEEAB22643BBE000F1716 /* URLSessionDataTaskProtocol.swift */; };
 		2A0F8238225F94E10085DFF5 /* PhotoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F8237225F94E10085DFF5 /* PhotoHeaderView.swift */; };
 		2A8D94162258D13900D9205C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D94152258D13900D9205C /* AppDelegate.swift */; };
 		2A8D94182258D13900D9205C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8D94172258D13900D9205C /* ViewController.swift */; };
@@ -38,6 +43,11 @@
 
 /* Begin PBXFileReference section */
 		2A09E355225E2B780029680B /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
+		2A0DEEA622643B8F000F1716 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		2A0DEEA822643BBE000F1716 /* MockDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataTask.swift; sourceTree = "<group>"; };
+		2A0DEEA922643BBE000F1716 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		2A0DEEAA22643BBE000F1716 /* MockSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
+		2A0DEEAB22643BBE000F1716 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
 		2A0F8237225F94E10085DFF5 /* PhotoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHeaderView.swift; sourceTree = "<group>"; };
 		2A8D94122258D13900D9205C /* Photo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A8D94152258D13900D9205C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +90,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A0DEEA522643B1A000F1716 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				2A0DEEA822643BBE000F1716 /* MockDataTask.swift */,
+				2A0DEEAA22643BBE000F1716 /* MockSession.swift */,
+				2A0DEEAB22643BBE000F1716 /* URLSessionDataTaskProtocol.swift */,
+				2A0DEEA922643BBE000F1716 /* URLSessionProtocol.swift */,
+				2A0DEEA622643B8F000F1716 /* HTTPClient.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		2A8D94092258D13900D9205C = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +125,7 @@
 		2A8D94142258D13900D9205C /* Photo */ = {
 			isa = PBXGroup;
 			children = (
+				2A0DEEA522643B1A000F1716 /* Objects */,
 				2A8D94152258D13900D9205C /* AppDelegate.swift */,
 				2A8D94172258D13900D9205C /* ViewController.swift */,
 				2A8D94192258D13900D9205C /* Main.storyboard */,
@@ -266,8 +289,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A0F8238225F94E10085DFF5 /* PhotoHeaderView.swift in Sources */,
+				2A0DEEAC22643BBE000F1716 /* MockDataTask.swift in Sources */,
 				2A8D94182258D13900D9205C /* ViewController.swift in Sources */,
+				2A0DEEA722643B8F000F1716 /* HTTPClient.swift in Sources */,
+				2A0DEEAF22643BBE000F1716 /* URLSessionDataTaskProtocol.swift in Sources */,
+				2A0DEEAD22643BBE000F1716 /* URLSessionProtocol.swift in Sources */,
 				2A8D94162258D13900D9205C /* AppDelegate.swift in Sources */,
+				2A0DEEAE22643BBE000F1716 /* MockSession.swift in Sources */,
 				2A8D94442258DC1600D9205C /* PhotoViewController.swift in Sources */,
 				2A09E356225E2B780029680B /* PhotoViewCell.swift in Sources */,
 			);

@@ -65,8 +65,10 @@ class PhotoViewController: UICollectionViewController {
             URLQueryItem(name: "per_page", value: "30")
         ]
         let url = components.url!
-        let dataTask = URLSession.shared.dataTask(with: url, completionHandler: {
-            (data, response, error) -> Void in
+        let session = URLSession.shared
+        let client = HTTPClient(session: session)
+        client.get(url: url, completionHandler: {
+            (data, error) -> Void in
             if let error = error {
                 NSLog("Error: \(error)")
                 return
@@ -96,13 +98,14 @@ class PhotoViewController: UICollectionViewController {
                 }
             }
         })
-        dataTask.resume()
     }
     
     func loadAPI(_ page: Int) {
         let url = URL(string: "https://api.unsplash.com/photos?client_id=\(self.key)&page=\(self.page)&per_page=30")
-        let dataTask = URLSession.shared.dataTask(with: url!, completionHandler: {
-            (data, response, error) -> Void in
+        let session = URLSession.shared
+        let client = HTTPClient(session: session)
+        client.get(url: url!, completionHandler: {
+            (data, error) -> Void in
             if let error = error {
                 NSLog("Error: \(error)")
                 return
@@ -129,7 +132,6 @@ class PhotoViewController: UICollectionViewController {
                 }
             }
         })
-        dataTask.resume()
     }
     
     
