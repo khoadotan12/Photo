@@ -69,7 +69,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bRM-Ib-WHh">
+                                <searchBar contentMode="redraw" placeholder="Tìm kiếm" translatesAutoresizingMaskIntoConstraints="NO" id="bRM-Ib-WHh">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>

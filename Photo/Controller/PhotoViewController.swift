@@ -55,8 +55,6 @@ class PhotoViewController: UICollectionViewController {
     }
     
     func searchAPI(_ query: String) {
-//        let escapedQuery = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-//        let urlpath = String(format: "?client_id=\(self.key)&query=\(escapedQuery)&page=\(self.page)&per_page=30")
         var components = URLComponents(string: "https://api.unsplash.com/search/photos")!
         components.queryItems = [
             URLQueryItem(name: "client_id", value: self.key),
@@ -227,7 +225,7 @@ extension PhotoViewController: UISearchBarDelegate {
 
 extension UIImageView {
     func load(url: URL, completion: @escaping ((UIImage) -> Void)) {
-        DispatchQueue.global().async { [weak self] in
+        DispatchQueue.global().async {
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {

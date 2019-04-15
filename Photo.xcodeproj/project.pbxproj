@@ -102,6 +102,31 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
+		2A0DEEB122647D03000F1716 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2A09E355225E2B780029680B /* PhotoViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2A0DEEB222647D10000F1716 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2A8D94172258D13900D9205C /* ViewController.swift */,
+				2A8D94432258DC1600D9205C /* PhotoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2A0DEEB322647DAE000F1716 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				2A0F8237225F94E10085DFF5 /* PhotoHeaderView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		2A8D94092258D13900D9205C = {
 			isa = PBXGroup;
 			children = (
@@ -125,16 +150,15 @@
 		2A8D94142258D13900D9205C /* Photo */ = {
 			isa = PBXGroup;
 			children = (
+				2A0DEEB322647DAE000F1716 /* Header */,
+				2A0DEEB222647D10000F1716 /* Controller */,
+				2A0DEEB122647D03000F1716 /* Cells */,
 				2A0DEEA522643B1A000F1716 /* Objects */,
 				2A8D94152258D13900D9205C /* AppDelegate.swift */,
-				2A8D94172258D13900D9205C /* ViewController.swift */,
 				2A8D94192258D13900D9205C /* Main.storyboard */,
 				2A8D941C2258D13C00D9205C /* Assets.xcassets */,
 				2A8D941E2258D13C00D9205C /* LaunchScreen.storyboard */,
 				2A8D94212258D13C00D9205C /* Info.plist */,
-				2A8D94432258DC1600D9205C /* PhotoViewController.swift */,
-				2A09E355225E2B780029680B /* PhotoViewCell.swift */,
-				2A0F8237225F94E10085DFF5 /* PhotoHeaderView.swift */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
