@@ -99,7 +99,7 @@ class PhotoViewController: UICollectionViewController {
     }
     
     func loadAPI(_ page: Int) {
-        let url = URL(string: "https://api.unsplash.com/photos?client_id=\(self.key)&page=\(self.page)&per_page=30")
+        let url = URL(string: "https://api.unsplash.com/photos?client_id=\(self.key)&page=\(self.page)&per_page=15")
         let session = URLSession.shared
         let client = HTTPClient(session: session)
         client.get(url: url!, completionHandler: {

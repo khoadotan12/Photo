@@ -15,7 +15,7 @@ class TopAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
             var baseline: CGFloat = -2
             var sameLineElements = [UICollectionViewLayoutAttributes]()
             var lastLineElements = [UICollectionViewLayoutAttributes]()
-            for element in attrs {
+            for (index, element) in attrs.enumerated() {
                 if element.representedElementCategory == .cell {
                     let frame = element.frame
                     let centerY = frame.midY
@@ -44,11 +44,16 @@ class TopAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
             return delta <= 0
         }
         if let tallest = sorted.last {
-            if !lastLineElements.isEmpty && lastLineElements.count >= sameLineElements.count {
-                for (index, obj) in sameLineElements.enumerated() {
-                    let lastLineHeight = lastLineElements[index].frame.size.height
-                    let lastLineIndex = lastLineElements[index].frame.origin.y
-                    obj.frame = obj.frame.offsetBy(dx: 0, dy: lastLineIndex - obj.frame.origin.y + lastLineHeight + 10)
+            if !lastLineElements.isEmpty {
+                if  lastLineElements.count < sameLineElements.count {
+                    print(lastLineElements.count)
+                    return true
+                } else {
+                    for (index, obj) in sameLineElements.enumerated() {
+                        let lastLineHeight = lastLineElements[index].frame.size.height
+                        let lastLineIndex = lastLineElements[index].frame.origin.y
+                        obj.frame = obj.frame.offsetBy(dx: 0, dy: lastLineIndex - obj.frame.origin.y + lastLineHeight + 10)
+                    }
                 }
             }
             else {
