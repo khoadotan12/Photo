@@ -33,15 +33,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0DV-hX-hra" customClass="TopAlignedCollectionViewFlowLayout" customModule="Photo" customModuleProvider="target">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p7E-yW-ZuM" customClass="TopAlignedCollectionViewFlowLayout" customModule="Photo">
                             <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" reuseIdentifier="ImageCell" id="NCW-ku-AiU" customClass="PhotoViewCell" customModule="Photo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="200" height="200"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="NCW-ku-AiU" customClass="PhotoViewCell" customModule="Photo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -65,28 +65,6 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PhotoHeaderView" id="mcd-di-TnI" customClass="PhotoHeaderView" customModule="Photo" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <searchBar contentMode="redraw" placeholder="Tìm kiếm" translatesAutoresizingMaskIntoConstraints="NO" id="bRM-Ib-WHh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="3IZ-or-BjB" id="6UL-PN-XS1"/>
-                                    </connections>
-                                </searchBar>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="bRM-Ib-WHh" firstAttribute="top" secondItem="mcd-di-TnI" secondAttribute="top" id="FAr-tE-YVd"/>
-                                <constraint firstItem="bRM-Ib-WHh" firstAttribute="leading" secondItem="mcd-di-TnI" secondAttribute="leading" id="mcN-gX-Q5W"/>
-                                <constraint firstAttribute="bottom" secondItem="bRM-Ib-WHh" secondAttribute="bottom" id="nQV-Ii-J2g"/>
-                                <constraint firstAttribute="trailing" secondItem="bRM-Ib-WHh" secondAttribute="trailing" id="wrV-4X-trj"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="searchBar" destination="bRM-Ib-WHh" id="1MT-Go-lxe"/>
-                            </connections>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="3IZ-or-BjB" id="4n5-Jc-S6g"/>
                             <outlet property="delegate" destination="3IZ-or-BjB" id="apU-nV-Ngc"/>
